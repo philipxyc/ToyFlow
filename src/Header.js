@@ -19,7 +19,7 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<AppBar position="static">
+			<AppBar position="fixed">
 				<Toolbar>
 					<AppBarMenu
 						id="0"

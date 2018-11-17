@@ -8,7 +8,6 @@ import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import "./css/Bottom.css";
 
 
-
 export default class Bottom extends React.Component {
 	state = {
 		selected: 0
@@ -20,7 +19,6 @@ export default class Bottom extends React.Component {
 				value={this.state.selected}
 				onChange={this.handleChange}
 				showLabels
-				color="secondary"
 				className="Bottom"
 			>
 				<BottomNavigationAction value={0} label="Explore" icon={<ExploreIcon />} />

@@ -14,7 +14,9 @@ export default class Home extends React.Component {
 		return (
 			<div>
 				<Header />
+				<div style={{height: '61px'}}></div>
 				<Content home={this} page={this.state.page} />
+				<div style={{height: '50px'}}></div>
 				<Bottom home={this} />
 			</div>
 		);
