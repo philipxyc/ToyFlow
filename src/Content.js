@@ -15,7 +15,7 @@ export default class Content extends React.Component {
 			);
 		} else if (this.props.page == 'account') {
 			return (
-				<div>account</div>
+				<Account />
 			);
 		} else {
 			return (
