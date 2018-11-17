@@ -24,6 +24,7 @@ class Header extends React.Component {
 					<AppBarMenu
 						id="0"
 						menuItems={[
+							"Messages",
 							"Settings",
 							"Feedback",
 							"About"
@@ -31,7 +32,7 @@ class Header extends React.Component {
 						icon={<MenuIcon />}
 					/>
 					<Typography variant="title" color="inherit" style={style.flex}>
-						ToyFlow
+						Toy Flow
 					</Typography>
 					<SearchIcon />
 				</Toolbar>

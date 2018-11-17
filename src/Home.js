@@ -3,9 +3,10 @@ import Bottom from './Bottom';
 import Header from "./Header";
 import Content from "./Content";
 
+
 export default class Home extends React.Component {
 	state = {
-		appMode: true,
+		page: 'explore',
 		prePage: null
 	};
 
@@ -13,7 +14,7 @@ export default class Home extends React.Component {
 		return (
 			<div>
 				<Header />
-				<Content home={this}/>
+				<Content home={this} page={this.state.page} />
 				<Bottom home={this} />
 			</div>
 		);
