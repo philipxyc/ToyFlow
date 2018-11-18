@@ -1,13 +1,13 @@
 import React from 'react';
 import Account from "./Account";
-import Explore from "./Explore";
+import ForYou from "./ForYou";
 
 
 export default class Content extends React.Component {
 	render() {
 		if (this.props.page == 'explore') {
 			return (
-				<Explore />
+				<ForYou />
 			);
 		} else if (this.props.page == 'dashboard') {
 			return (

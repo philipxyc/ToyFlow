@@ -30,7 +30,7 @@ export default class Account extends React.Component {
 					// subtitle='学渣一枚，大神们多多关照'
 					// avatar={yuehaoavatar}
 				/>
-				<CardMedia>
+				<CardMedia image='.'>
 					<Divider/>
 					<List>
 						<ListItem>

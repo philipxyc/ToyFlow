@@ -5,6 +5,7 @@ import ExploreIcon from '@material-ui/icons/Explore';
 import StarIcon from '@material-ui/icons/Star';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import "./css/Bottom.css";
 
 
@@ -21,8 +22,8 @@ export default class Bottom extends React.Component {
 				showLabels
 				className="Bottom"
 			>
-				<BottomNavigationAction value={0} label="Explore" icon={<ExploreIcon />} />
-				<BottomNavigationAction value={1} label="Dashboard" icon={<ViewQuiltIcon />} />
+				<BottomNavigationAction value={0} label="For you" icon={<FavoriteIcon />} />
+				<BottomNavigationAction value={1} label="Discover" icon={<ExploreIcon />} />
 				<BottomNavigationAction value={2} label="Account" icon={<AccountCircleIcon />} />
 			</BottomNavigation>
 		);
