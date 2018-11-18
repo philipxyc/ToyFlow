@@ -25,6 +25,17 @@ import v3 from './assets/3.mp4';
 import v4 from './assets/4.mp4';
 
 
+function sample(arr, size) {
+	var shuffled = arr.slice(0), i = arr.length, temp, index;
+	while (i--) {
+		index = Math.floor((i + 1) * Math.random());
+		temp = shuffled[index];
+		shuffled[index] = shuffled[i];
+		shuffled[i] = temp;
+	}
+	return shuffled.slice(0, size);
+}
+
 class Item extends React.Component {
 	render() {
 		const { classes } = this.props;
@@ -36,8 +47,7 @@ class Item extends React.Component {
 					component='div'
 					image='.'
 				>
-					<video controls autoPlay loop style={{width: "100%"}}>
-						<source type="video/mp4" src={this.props.video} />
+					<video controls autoPlay loop style={{width: "100%"}} src={this.props.video}>
 					</video>
 				</CardMedia>
 				<CardContent>
@@ -82,21 +92,20 @@ const TOY_LIST = [
 class ForYou extends React.Component {
 	state = {
 		msgOpen: false,
-		toyListIndex: 0,
+		toyListIndex1: 0,
+		toyListIndex2: 1,
 		zoomIn: true
 	};
 
 	handleChoose = () => {
 		this.setState({msgOpen: true, zoomIn: false});
 
-		let temp = this.state.toyListIndex;
-		temp += 2;
+		let i_arr = sample([0, 1, 2, 3], 2)
 
-		if (temp < TOY_LIST.length) {
-			this.setState({toyListIndex: temp});
-		} else {
-			this.setState({toyListIndex: 0});
-		}
+		this.setState({
+			toyListIndex1: i_arr[0],
+			toyListIndex2: i_arr[1]
+		});
 
 		setTimeout(() => {
 			this.setState({zoomIn: true});
@@ -111,10 +120,10 @@ class ForYou extends React.Component {
 		const { classes } = this.props;
 
 		return (
-			<div style={{padding: '0px 10px'}}>
+			<div style={{padding: '20px 10px'}}>
 				<Zoom in={this.state.zoomIn}>
 					<div style={{ marginBottom: '20px' }}>
-						<Item classes={classes} video={TOY_LIST[this.state.toyListIndex].video_src} description={TOY_LIST[this.state.toyListIndex].description} />
+						<Item classes={classes} video={TOY_LIST[this.state.toyListIndex1].video_src} description={TOY_LIST[this.state.toyListIndex1].description} />
 					</div>
 				</Zoom>
 
@@ -129,7 +138,7 @@ class ForYou extends React.Component {
 
 				<Zoom in={this.state.zoomIn}>
 					<div style={{ marginTop: '20px' }}>
-						<Item classes={classes} video={TOY_LIST[this.state.toyListIndex + 1].video_src} description={TOY_LIST[this.state.toyListIndex + 1].description} />
+						<Item classes={classes} video={TOY_LIST[this.state.toyListIndex2].video_src} description={TOY_LIST[this.state.toyListIndex2].description} />
 					</div>
 				</Zoom>
 
