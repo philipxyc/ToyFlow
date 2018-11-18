@@ -1,4 +1,7 @@
 import React from 'react';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 const AgoraRTC = window.AgoraRTC;
 const appId = "747c8622435a4a97b32a518b935b9332";
@@ -172,13 +175,26 @@ export default class FaceTime extends React.Component {
     renderGrids() {
         console.log("renderGrids:=>",this.state.subscribers);
         const { subscribers } = this.state;
-        return subscribers.map(k => <div key={k.id} id={"agora_remote" + k.id} style={{ float:"left", width:"810px", height:"607px", display:"inline-block" }}></div>);
+        // return subscribers.map(k => <div key={k.id} id={"agora_remote" + k.id} style={{ float:"left", width:"200px", height:"200px", display:"inline-block" }}></div>);
+
+            return (
+                <div>
+                    <div id = "agora_local" style={{position:"fixed", right:0, bottom:60, width:"200px", height:"200px", display:"inline-block"}}></div>
+                    <GridList>
+                        {subscribers.map(k => (
+                            <GridListTile>
+                                <div key={k.id} id={"agora_remote" + k.id} style={{ width:"200px", height:"200px", display:"inline-block"}}></div>
+                            </GridListTile>
+                        ))}
+                    </GridList>
+                </div>
+            );
+
     }
 
 	render() {
 		return (
             <div style = {{margin:"0 auto"}}>
-                <div id = "agora_local" style={{float:"right", width:"210px", height:"147px", display:"inline-block"}}></div>
                 {this.renderGrids()}
             </div>
         );
