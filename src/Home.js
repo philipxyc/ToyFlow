@@ -8,7 +8,7 @@ export default class Home extends React.Component {
 	state = {
 		page: 'explore',
 		prePage: null,
-		reg: true
+		reg: false
 	};
 
 	render() {

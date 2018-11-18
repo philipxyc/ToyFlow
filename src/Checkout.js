@@ -10,9 +10,13 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
+import AddressForm from './forms/AddressForm';
+import PaymentForm from './forms/PaymentForm';
+import Review from './forms/Review';
+import GeneralForm from './forms/GeneralForm';
+import LikeForm from './forms/LikeForm';
+import ExtraForm from './forms/ExtraForm';
+
 
 const styles = theme => ({
   appBar: {
@@ -51,16 +55,18 @@ const styles = theme => ({
   },
 });
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['主要信息', '喜好信息', '物流信息', '其他信息'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <GeneralForm />;
     case 1:
-      return <PaymentForm />;
+      return <LikeForm />;
     case 2:
-      return <Review />;
+      return <AddressForm />;
+    case 3:
+      return <ExtraForm />
     default:
       throw new Error('Unknown step');
   }
@@ -99,14 +105,17 @@ class Checkout extends React.Component {
         <AppBar position="absolute" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
-              Company name
+              Toy Flow
             </Typography>
           </Toolbar>
         </AppBar>
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
-              Checkout
+              Preference
+            </Typography><br/>
+            <Typography align="center">
+              我们将询问一些问题以便为您的宝宝定制合适的玩具
             </Typography>
             <Stepper activeStep={activeStep} className={classes.stepper}>
               {steps.map(label => (
@@ -119,11 +128,10 @@ class Checkout extends React.Component {
               {activeStep === steps.length ? (
                 <React.Fragment>
                   <Typography variant="h5" gutterBottom>
-                    Thank you for your order.
+                    感谢您完成初始化设置！
                   </Typography>
                   <Typography variant="subtitle1">
-                    Your order number is #2001539. We have emailed your order confirmation, and will
-                    send you an update when your order has shipped.
+                    接下来请您在有空时与宝宝一起完成之后的喜好学习。APP内还有其他更多的惊喜噢！
                   </Typography>
                   <br/>
                   <Button variant="contained" color="primary" onClick={()=>{this.props.home.setState({reg: true});}}>
