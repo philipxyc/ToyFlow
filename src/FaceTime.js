@@ -154,16 +154,26 @@ export default class FaceTime extends React.Component {
             // stream.play('agora_remote' + stream.getId());
         });
 
-        this.client.on('stream-removed', function (evt) {
-            let stream = evt.stream;
+        this.client.on('stream-removed', (evt) => {
+            const stream = evt.stream;
             stream.stop();
             // $('#agora_remote' + stream.getId()).remove();
             console.log("Remote stream is removed " + stream.getId());
         });
 
-        this.client.on('peer-leave', function (evt) {
-            let stream = evt.stream;
+        this.client.on('peer-leave', (evt) => {
+            const stream = evt.stream;
             if (stream) {
+                const { streamQueue ,subscribers } = this.state;
+                streamQueue.splice(streamQueue.indexOf(stream), 1);
+                for(let i = 0; i < subscribers.length; i++){
+                    let x = subscribers[i];
+                    if(x.id == stream.getId()){
+                        subscribers.splice(i, 1);
+                        break;
+                    }
+                }
+
                 stream.stop();
                 // $('#agora_remote' + stream.getId()).remove();
                 console.log(evt.uid + " leaved from this channel");
@@ -205,8 +215,7 @@ export default class FaceTime extends React.Component {
 
         // console.log("11",streamQueue);
         streamQueue.forEach(k => k.play('agora_remote' + k.getId()));
-
-        // this.streamQueue = [];
+        streamQueue.splice(0);
     }
 
 }
