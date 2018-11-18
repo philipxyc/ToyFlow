@@ -16,7 +16,7 @@ function LikeForm() {
           <TextField required id="cardName" label="收货人姓名" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required id="cardNumber" label="收货人姓名" fullWidth />
+          <TextField required id="cardNumber" label="收货人手机号" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField required id="expDate" label="收货地址" fullWidth />
