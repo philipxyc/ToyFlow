@@ -10,6 +10,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import Zoom from '@material-ui/core/Zoom';
 
 
 class Item extends React.Component {
@@ -32,14 +37,6 @@ class Item extends React.Component {
 						guests. Add 1 cup of frozen peas along with the mussels, if you like.
 					</Typography>
 				</CardContent>
-				<CardActions className={classes.actions} disableActionSpacing>
-					<Button style={{marginLeft: '10px', marginRight: '20px'}} variant="contained" color="primary" component="span" size="large">
-						<FavoriteIcon style={{marginRight: '10px'}} /> Like
-					</Button>
-					<Button variant="contained" color="primary" component="span" size="large">
-						<HighlightOffIcon style={{marginRight: '10px'}} /> Dislike
-					</Button>
-				</CardActions>
 			</Card>
 		);
 	}
@@ -69,13 +66,26 @@ class Explore extends React.Component {
 
 		return (
 			<div style={{padding: '0px 10px'}}>
-				{
-					TOY_LIST.map(item => (
-						<div style={{ marginBottom: '20px' }}>
-							<Item classes={classes} video={item.video_src} description={item.description} />
-						</div>
-					))
-				}
+				<Zoom in={true}>
+					<div style={{ marginBottom: '20px' }}>
+						<Item classes={classes} video={TOY_LIST[0].video_src} description={TOY_LIST[0].description} />
+					</div>
+				</Zoom>
+
+				<div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+					<Button variant="extendedFab" color="primary">
+						<ArrowUpwardIcon /> Choose
+					</Button>
+					<Button style={{marginLeft: 20, backgroundColor: '#2196f3'}} variant="extendedFab" color="primary">
+						<ArrowDownwardIcon /> Choose
+					</Button>
+				</div>
+
+				<Zoom in={true}>
+					<div style={{ marginTop: '20px' }}>
+						<Item classes={classes} video={TOY_LIST[1].video_src} description={TOY_LIST[1].description} />
+					</div>
+				</Zoom>
 			</div>
 		);
 	}
