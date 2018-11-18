@@ -19,6 +19,10 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import v1 from './assets/1.mp4';
+import v2 from './assets/2.mp4';
+import v3 from './assets/3.mp4';
+import v4 from './assets/4.mp4';
 
 
 class Item extends React.Component {
@@ -50,24 +54,27 @@ const styles = theme => ({
 	actions: {
 		display: 'flex',
 		marginBottom: '20px'
+	},
+	error: {
+		backgroundColor: theme.palette.error.dark,
 	}
 });
 
 const TOY_LIST = [
 	{
-		video_src: 'http://ms.xiayc.com/GDGmedia/1.mp4',
+		video_src: v1,
 		description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.'
 	},
 	{
-		video_src: 'http://ms.xiayc.com/GDGmedia/2.mp4',
+		video_src: v2,
 		description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
 	},
 	{
-		video_src: 'http://ms.xiayc.com/GDGmedia/3.mp4',
+		video_src: v3,
 		description: '"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer'
 	},
 	{
-		video_src: 'http://ms.xiayc.com/GDGmedia/4.mp4',
+		video_src: v4,
 		description: '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate '
 	}
 ];

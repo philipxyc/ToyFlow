@@ -1,6 +1,7 @@
 import React from 'react';
 import Account from "./Account";
 import ForYou from "./ForYou";
+import Workout from "./Workout"
 
 
 export default class Content extends React.Component {
@@ -11,7 +12,7 @@ export default class Content extends React.Component {
 			);
 		} else if (this.props.page == 'dashboard') {
 			return (
-				<div>dashboard</div>
+				<Workout />
 			);
 		} else if (this.props.page == 'account') {
 			return (
